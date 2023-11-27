@@ -1,7 +1,11 @@
 # competitive_programming
 
+# building
+`./build.sh <file_name>`
+* not build with optimizations
 
-website
+
+# info
 * ladder https://earthshakira.github.io/a2oj-clientside/server/Ladders.html
 * https://codeforces.com
-* __cxa_throw
+* username: `__cxa_throw`
