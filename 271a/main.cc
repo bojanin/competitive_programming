@@ -1,7 +1,9 @@
 #include <fstream>
 #include <iostream>
+#include <limits>
 #include <stdio.h>
 #include <string>
+#include <unordered_set>
 
 std::vector<std::string> SplitStr(const std::string &s, const char delimiter) {
   size_t pos_start = 0, pos_end, delim_len = 1;
@@ -20,25 +22,22 @@ std::vector<std::string> SplitStr(const std::string &s, const char delimiter) {
 //"0 0 0 0 0"
 int main(int argc, char **argv) {
 
-  int moves = 0;
-  for (int i = 0; i < 5; ++i) {
-    std::string row;
-    std::getline(std::cin, row);
+  std::string year_str;
+  std::getline(std::cin, year_str);
+  int year = std::stoi(year_str) + 1;
 
-    int column = 0;
-    for (const char &c : row) {
-
-      if (c == '1') {
-        moves = std::abs(column - 2) + std::abs(i - 2);
-        goto finish;
-      }
-      if (c == '1' || c == '0') {
-        column += 1;
-      }
+  // 2134 example year:
+  std::unordered_set<int> s;
+  for (int i = year; i <= std::numeric_limits<int>::max(); i++) {
+    s.clear();
+    s.insert(i / 1000);
+    s.insert((i / 100) % 10);
+    s.insert((i / 10) % 10);
+    s.insert(i % 10);
+    if (s.size() == 4) {
+      printf("%i\n", i);
+      return 0;
     }
   }
-finish:
-  printf("%d\n", moves);
-
   return 0;
 }
