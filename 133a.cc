@@ -7,6 +7,11 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#ifdef _WIN32
+#include <string.h>
+#else
+#include <strings.h>
+#endif
 
 template <typename... T> void Read(T &...args) { ((std::cin >> args), ...); }
 template <typename... T> void Write(T &&...args) {
@@ -19,13 +24,15 @@ int main(int argc, char **argv) {
   std::ios::sync_with_stdio(0);
   std::cin.tie(0);
   std::cout.tie(0);
-  int n, k, l, c, d, p, nl, np;
-  Read(n, k, l, c, d, p, nl, np);
-  int drinks = (k * l) / nl;
-  int limes = c * d;
-  int salt = p / np;
+  std::string program;
+  Read(program);
 
-  printf("%i\n", std::min({drinks, salt, limes}) / n);
-
+  for (int i = 0; i < program.size(); i++) {
+    if (program[i] == 'H' || program[i] == 'Q' || program[i] == '9') {
+      printf("YES\n");
+      return 0;
+    }
+  }
+  printf("NO\n");
   return 0;
 }

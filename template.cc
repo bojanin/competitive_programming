@@ -7,6 +7,13 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#ifdef _WIN32
+#include <string.h>
+#define SCMP(s1, s2) ::_stricmp(s1, s2)
+#else
+#define SCMP(s1, s2) strcasecmp(s1, s2)
+#include <strings.h>
+#endif
 
 template <typename... T> void Read(T &...args) { ((std::cin >> args), ...); }
 template <typename... T> void Write(T &&...args) {
