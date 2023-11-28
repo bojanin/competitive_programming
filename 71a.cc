@@ -4,7 +4,6 @@
 #include <istream>
 #include <sstream>
 #include <stdio.h>
-#include <unordered_set>
 #include <vector>
 
 template <typename... T> void Read(T &...args) { ((std::cin >> args), ...); }
@@ -18,5 +17,17 @@ int main(int argc, char **argv) {
   std::ios::sync_with_stdio(0);
   std::cin.tie(0);
   std::cout.tie(0);
+  int words;
+  Read(words);
+  while (words > 0) {
+    std::string s;
+    Read(s);
+    if (s.size() > 10) {
+      printf("%c%lu%c\n", s[0], s.size() - 2, s[s.size() - 1]);
+    } else {
+      printf("%s\n", s.c_str());
+    }
+    words--;
+  }
   return 0;
 }

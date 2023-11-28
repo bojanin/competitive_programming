@@ -18,5 +18,16 @@ int main(int argc, char **argv) {
   std::ios::sync_with_stdio(0);
   std::cin.tie(0);
   std::cout.tie(0);
+  int a, g, d, f;
+  std::unordered_set<int> s;
+  Read(a, g, d, f);
+
+  s.insert(a);
+  s.insert(g);
+  s.insert(d);
+  s.insert(f);
+
+  printf("%i\n", 4 - (int)s.size());
+
   return 0;
 }

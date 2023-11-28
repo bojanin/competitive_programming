@@ -18,5 +18,17 @@ int main(int argc, char **argv) {
   std::ios::sync_with_stdio(0);
   std::cin.tie(0);
   std::cout.tie(0);
+  std::unordered_set<char> s;
+  std::string name;
+  Read(name);
+  for (int i = 0; i < name.size(); ++i) {
+    s.insert(name[i]);
+  }
+
+  if (s.size() % 2 == 0) {
+    printf("CHAT WITH HER!\n");
+  } else {
+    printf("IGNORE HIM!\n");
+  }
   return 0;
 }

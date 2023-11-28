@@ -4,7 +4,6 @@
 #include <istream>
 #include <sstream>
 #include <stdio.h>
-#include <unordered_set>
 #include <vector>
 
 template <typename... T> void Read(T &...args) { ((std::cin >> args), ...); }
@@ -18,5 +17,19 @@ int main(int argc, char **argv) {
   std::ios::sync_with_stdio(0);
   std::cin.tie(0);
   std::cout.tie(0);
+  int n;
+  Read(n);
+  int max = 0;
+  int passengers = 0;
+
+  while (n > 0) {
+    int exit, enter;
+    Read(exit, enter);
+    passengers -= exit;
+    passengers += enter;
+    max = std::max(max, passengers);
+    n--;
+  }
+  printf("%i\n", max);
   return 0;
 }
